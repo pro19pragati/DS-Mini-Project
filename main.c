@@ -1,4 +1,3 @@
-// ...existing code...
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -49,7 +48,7 @@ void displayPatients() {
     Patient* temp = head;
     printf("Patient Records:\n");
     while (temp != NULL) {
-        printf("ID: %d\nName: %s\nAge: %d\nDisease: %s\n---------------------\n",
+        printf("ID: %d\nName: %s\nAge: %d\nDisease: %s\n\n",
                temp->id, temp->name, temp->age, temp->disease);
         temp = temp->next;
     }
@@ -106,11 +105,11 @@ int main() {
                 printf("Enter patient ID: ");
                 if (scanf("%d", &id) != 1) { fprintf(stderr, "Invalid ID.\n"); break; }
                 printf("Enter patient name: ");
-                scanf(" %[^\n]", name);      // fixed: removed trailing 's'
+                scanf(" %[^\n]", name);     
                 printf("Enter patient age: ");
                 if (scanf("%d", &age) != 1) { fprintf(stderr, "Invalid age.\n"); break; }
                 printf("Enter disease: ");
-                scanf(" %[^\n]", disease);   // fixed: removed trailing 's'
+                scanf(" %[^\n]", disease);   
                 addPatient(id, name, age, disease);
                 break;
             case 2:
@@ -132,10 +131,9 @@ int main() {
             default:
                 printf("Invalid choice! Try again.\n");
         }
-        // consume leftover newline if any before next loop iteration
+    
         int c;
         while ((c = getchar()) != '\n' && c != EOF) { }
     }
     return 0;
 }
-// ...existing code...
